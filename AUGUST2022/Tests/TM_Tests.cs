@@ -11,54 +11,43 @@ namespace AUGUST2022.Tests
     [TestFixture]
     public class TM_Tests : CommonDriver
     {
-        [SetUp]
-        public void LoginActions()
-        {
-            //open chrome browser
-            driver = new ChromeDriver();
-            // Login page Object login and initialization and defination
-            LoginPage loginPageObj = new LoginPage();
-            loginPageObj.LoginSteps(driver);
+        
 
             //Home page object initialisation and defination
             HomePage homePageObj = new HomePage();
-            homePageObj.GoTOTMpage(driver);
-        }
-        [Test]
+            TMPage tmPageObj = new TMPage();
+
+
+        [Test, Order(1), Description("check if user is able to to create TM record " )]
         public void CreateTMTest()
         {
+            homePageObj.GoTOTMpage(driver);
             // Tm page object initialisation and defination
-            TMPage tmPageObj = new TMPage();
+            
             tmPageObj.CreateTM(driver);
 
         }
 
-        [Test]
+        [Test, Order(2), Description("Check if user able to edit created TM record")]
         public void EditTMTest()
         {
-
+            homePageObj.GoTOTMpage(driver);
             // Edit Tm
-            TMPage tmPageObj = new TMPage();
-            tmPageObj.EditTm(driver);
+
+            //tmPageObj.EditTm(driver);
 
         }
-        [Test]
+        [Test, Order(3), Description("Check if used deleted edited TM record")]
         public void DeleteTMTest()
         {
 
-
+            homePageObj.GoTOTMpage(driver);
             // Delete TM
-            TMPage tmPageObj = new TMPage();
+
             tmPageObj.DeleteTM(driver);
 
         }
 
-        [TearDown]
-        public void CloseTestRun()
-        {
-            driver.Quit();
-
-        }
 
        
 
