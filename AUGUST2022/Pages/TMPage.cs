@@ -76,7 +76,7 @@ namespace AUGUST2022.Pages
 
         }
 
-        public void EditTm(IWebDriver driver, string description)
+        public void EditTm(IWebDriver driver, string description, string code, string price )
         {
             Thread.Sleep(2000);
             IWebElement goToLastPageButton = driver.FindElement(By.XPath("//*[@id=\'tmsGrid\']/div[4]/a[4]/span"));
@@ -84,22 +84,15 @@ namespace AUGUST2022.Pages
             Thread.Sleep(1500);
 
             IWebElement findRecordCreated = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
-            if (findRecordCreated.Text == "shikhartest")
-             {
-               // Click on the Edit Button
-                IWebElement editButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
-                editButton.Click();
-                Thread.Sleep(2000);
-             }
-           else
-             {
-                Assert.Fail("Record to be edited hasn't been found. Record not edited.");
-             }
+            // Click on the Edit Button
+            IWebElement editButton = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[5]/a[1]"));
+            editButton.Click();
+
 
             // Click on Code Textbox and set new Code
             IWebElement codeTextBox1 = driver.FindElement(By.Id("Code"));
             codeTextBox1.Clear();
-            codeTextBox1.SendKeys("Pandey");
+            codeTextBox1.SendKeys(code);
             Thread.Sleep(2000);
 
             // Click on Description Textbox and update description
@@ -119,10 +112,9 @@ namespace AUGUST2022.Pages
             IWebElement pricePerUnit1 = driver.FindElement(By.Id("Price"));
             pricePerUnit1.Clear();
 
-
             priceTag.Click();
 
-            pricePerUnit1.SendKeys("180.00");
+            pricePerUnit1.SendKeys(price);
             Thread.Sleep(2000);
 
             // Click On save button to save record
@@ -135,12 +127,12 @@ namespace AUGUST2022.Pages
             goToLastPageButton1.Click();
             Thread.Sleep(1500);
 
-            IWebElement editedCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+           
             
-            IWebElement editedPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
+            
 
             // Assertion
-            Assert.That(editedCode.Text == "Pandey", "Actual Code and expected code do not match.");
+           // Assert.That(editedCode.Text == "Pandey", "Actual Code and expected code do not match.");
             //Assert.That(editedDescription.Text == "Pandey", "Actual Description and expected description do not match.");
             //Assert.That(editedPrice.Text == "$180.00", "Actual Price and expected price do not match.");
 
@@ -152,6 +144,19 @@ namespace AUGUST2022.Pages
         {
             IWebElement editedDescription = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[3]"));
             return editedDescription.Text;
+
+        }
+        public string GetEditedPrice(IWebDriver driver)
+        {
+            IWebElement editedCode = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
+            return editedCode.Text;
+
+        }
+
+        public string GoToEditedPrice(IWebDriver driver)
+        {
+            IWebElement editedPrice = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
+            return editedPrice.Text;
 
         }
 

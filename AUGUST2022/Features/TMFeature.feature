@@ -12,11 +12,11 @@ Scenario: Create time and material record
 Scenario Outline: Edit Time and Material record with Valid details
 	Given  user logged into turnup portal successfully
 	When user navigate to Time and material page 
-	And  user update '<Description>' on existing time and material record
-	Then record should have the updated'<Description>'
+	And  user update '<Description>','<Code>' and '<Price>' on existing time and material record
+	Then record should have the updated'<Description>', '<Code>' and '<Price>'
 
 Examples: 
-| Description |
-| abc         |
-| Pandey      |
-| Updated     |
+| Description | Code    | Price		|
+| abc         | Shikhar | $1000.00  |
+| Pandey      | Life    | $2000.00  |
+| Updated     | Story   | $3000.00  |
