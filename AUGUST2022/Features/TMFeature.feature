@@ -16,7 +16,7 @@ Scenario Outline: Edit Time and Material record with Valid details
 	Then record should have the updated'<Description>', '<Code>' and '<Price>'
 
 Examples: 
-| Description | Code    | Price		|
-| abc         | Shikhar | $1000.00  |
-| Pandey      | Life    | $2000.00  |
-| Updated     | Story   | $3000.00  |
+| Description | Code    | Price	   |
+| abc         | Shikhar | $100.00  |
+| Pandey      | Life    | $200.00  |
+| Updated     | Story   | $300.00  |

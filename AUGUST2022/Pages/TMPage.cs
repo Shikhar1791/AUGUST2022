@@ -172,7 +172,7 @@ namespace AUGUST2022.Pages
 
             IWebElement findEditedRecord = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[1]"));
 
-            if (findEditedRecord.Text == "Pandey")
+            if (findEditedRecord.Text == "Story")
             {
 
                 // Click on the Delete Button
@@ -197,9 +197,9 @@ namespace AUGUST2022.Pages
             IWebElement price = driver.FindElement(By.XPath("//*[@id='tmsGrid']/div[3]/table/tbody/tr[last()]/td[4]"));
 
             // Assertion
-            Assert.That(code.Text != "Pandey", "Code record hasn't been deleted."); 
-            Assert.That(description.Text != "Pandey", "Description record hasn't been deleted.");
-            Assert.That(price.Text != "$180.00", "Price record hasn't been deleted.");
+            Assert.That(code.Text != "Story", "Code record hasn't been deleted."); 
+            Assert.That(description.Text != "Updated", "Description record hasn't been deleted.");
+            Assert.That(price.Text != "$300.00", "Price record hasn't been deleted.");
 
         }
 
